@@ -34,6 +34,14 @@ body {
   border-radius: 12px;
   background: rgba(255,255,255,0.05);
   max-width: 95vw;
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+}
+.logo-title img {
+  height: 38px;
+  width: auto;
+  display: inline-block;
 }
 @media (max-width: 600px) {
   .logo-title {
@@ -77,24 +85,26 @@ h1 {
   margin-bottom: 0.7rem;
 }
 .disclaimer-box {
-  background: linear-gradient(120deg, #f5f7fa 60%, #e3f2fd 100%);
-  color: #222;
+  background: linear-gradient(120deg, #e3f2fd 60%, #bbdefb 100%);
+  color: #174ea6;
   border-radius: 14px;
   padding: 1.1rem 1.2rem 1.1rem 1.2rem;
   margin-bottom: 1.2rem;
   font-size: 1rem;
-  box-shadow: 0 4px 18px 0 rgba(67,160,71,0.07), 0 1.5px 6px 0 rgba(45,108,223,0.04);
+  box-shadow: 0 4px 18px 0 rgba(45,108,223,0.09), 0 1.5px 6px 0 rgba(45,108,223,0.04);
   line-height: 1.6;
   border-left: 7px solid #2d6cdf;
-  border-right: 2px solid #e3f2fd;
+  border-right: 2px solid #bbdefb;
   transition: box-shadow 0.2s;
   position: relative;
-  overflow: visible; /* allow content to expand */
-  word-break: break-word; /* wrap long words */
-  white-space: normal;    /* allow normal wrapping */
+  overflow: visible;
+  word-break: break-word;
+  white-space: normal;
+  margin-top: 2rem;
+  clear: both;
 }
 .disclaimer-box strong {
-  color: #2d6cdf;
+  color: #1565c0;
   font-weight: 700;
   letter-spacing: 0.5px;
   font-size: 1.07em;
@@ -106,8 +116,8 @@ h1 {
   right: -60px;
   width: 120px;
   height: 120px;
-  background: radial-gradient(circle, #2d6cdf22 0%, #f5f7fa00 80%);
-  opacity: 0.3;
+  background: radial-gradient(circle, #fff3 0%, #6c1e8f00 80%);
+  opacity: 0.5;
   pointer-events: none;
   z-index: 0;
 }
@@ -129,7 +139,7 @@ input[type="number"], input[type="text"] {
   border: 1px solid #d1d5db;
   border-radius: 8px;
   background: #f3f6fa;
-  transition: border 0.2s, background 0.2s;
+  transition: border 0.2s;
   margin-top: 0.2rem;
   margin-bottom: 0.7rem;
   width: 100%;
@@ -137,22 +147,6 @@ input[type="number"], input[type="text"] {
   touch-action: manipulation;
   font-family: inherit;
 }
-
-/* Only show error border/background after Calculate is pressed (add .show-errors to body) */
-body:not(.show-errors) .input-error,
-body:not(.show-errors) input[type="number"].error,
-body:not(.show-errors) input[type="text"].error {
-  display: none !important;
-  border: 1px solid #d1d5db !important;
-  background: #f3f6fa !important;
-}
-
-input[type="number"].error,
-input[type="text"].error {
-  border: 2px solid #e53935 !important;
-  background: #fff5f5 !important;
-}
-
 input[type="number"]:focus, input[type="text"]:focus {
   border: 1.5px solid #2d6cdf;
   outline: none;
@@ -346,61 +340,114 @@ button:hover, button:focus {
 @media print {
   html, body {
     background: #fff !important;
-    height: 100%;
-    min-height: 100%;
+    color: #000 !important;
+    width: 100vw !important;
+    height: 100vh !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    font-size: 12px !important;
   }
-  .header, .actions {
+  .header, .logo-title {
+    background: #fff !important;
+    color: #000 !important;
     box-shadow: none !important;
-  }
-  .actions {
-    display: none !important;
+    text-shadow: none !important;
   }
   .main-flex {
-    flex-direction: row !important;
-    height: 100vh !important;
-    max-height: 100vh !important;
+    flex-direction: column !important;
+    height: auto !important;
+    width: 100vw !important;
     gap: 0 !important;
   }
   .container, .right-panel {
-    border-radius: 0 !important;
-    margin: 0 !important;
-    box-shadow: none !important;
-    padding: 0.5rem 0.5rem !important;
-    height: 100vh !important;
-    max-height: 100vh !important;
-  }
-  .container {
-    width: 35vw !important;
-    min-width: 0 !important;
-    max-width: 40vw !important;
-    font-size: 0.9rem !important;
-    overflow: hidden !important;
-  }
-  .right-panel {
-    width: 65vw !important;
+    width: 100vw !important;
     min-width: 0 !important;
     max-width: 100vw !important;
-    height: 100vh !important;
-    max-height: 100vh !important;
-    padding: 0.5rem 0.5rem !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    padding: 0.5rem !important;
+    height: auto !important;
+    overflow: visible !important;
+  }
+  .disclaimer-box {
+    page-break-inside: avoid !important;
+    font-size: 11px !important;
+    padding: 0.5rem !important;
+    margin: 0.5rem 0 0 0 !important;
+    background: #e3f2fd !important;
+    color: #174ea6 !important;
+    border-radius: 8px !important;
+    box-shadow: none !important;
+    margin-top: 2rem !important;
+    display: block !important;
+    clear: both !important;
+    width: 100vw !important;
+    position: relative !important;
+    z-index: 1 !important;
+  }
+  .actions, .actions button {
+    display: none !important;
   }
   #esopChart {
     max-width: 100vw !important;
-    height: 90vh !important;
-    min-height: 200px !important;
-  }
-  .scenario-row, .result, .chart-section {
+    width: 100vw !important;
+    height: 600px !important;      /* Increased height for print */
+    min-height: 400px !important;
     page-break-inside: avoid !important;
+    display: block !important;
   }
   .result {
-    padding: 0.5rem !important;
+    page-break-inside: avoid !important;
+    font-size: 12px !important;
+    padding: 0.2rem !important;
   }
-  .chart-title {
-    font-size: 1rem !important;
-    margin-bottom: 0.5rem !important;
+  label, input, select, textarea {
+    font-size: 11px !important;
   }
-  h1, .subtitle {
-    font-size: 1.1rem !important;
-    margin-bottom: 0.5rem !important;
+  input, select, textarea {
+    border: 1px solid #bbb !important;
+    background: #fff !important;
+    color: #000 !important;
+    padding: 0.2rem !important;
   }
+  input[type="number"], input[type="text"], select, textarea {
+    font-size: 9px !important;
+    padding: 0.1rem 0.2rem !important;
+    margin-top: 0.05rem !important;
+    margin-bottom: 0.15rem !important;
+    height: 1.2em !important;
+  }
+  label {
+    font-size: 10px !important;
+  }
+  /* Hide scrollbars */
+  ::-webkit-scrollbar { display: none !important; }
+  /* Remove any fixed heights */
+  * {
+    max-height: none !important;
+    height: auto !important;
+  }
+}
+function applyInputErrorStyles() {
+  document.querySelectorAll('.scenario-row').forEach((row, idx) => {
+    [
+      'salary',
+      'salaryIncrease',
+      'accountBalance',
+      'fmvPercent',
+      'growth',
+      'years'
+    ].forEach(field => {
+      const input = row.querySelector(`.${field}`);
+      if (input) {
+        if (calculatePressed && (!input.value || input.value.trim() === "")) {
+          input.style.border = "2px solid #e53935";
+          input.style.background = "#fff5f5";
+        } else {
+          input.style.border = "";
+          input.style.background = "";
+        }
+      }
+    });
+  });
 }

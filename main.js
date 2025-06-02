@@ -45,10 +45,11 @@ function scenarioRow(scenario, idx) {
   const highlight = idx > 0;
   const showHelp = idx === 0;
 
+  // Only show required warning after Calculate is pressed and the field is empty
   function warnIfEmpty(val, inputClass) {
     if (!calculatePressed) return '';
     if (val && val.trim() !== "") return '';
-    return `<span class="input-error" style="display:block;">Please enter a value above.</span>`;
+    return `<span class="input-error" style="display:block;color:#c62828;">Please enter a value above.</span>`;
   }
 
   return `
@@ -97,8 +98,9 @@ function scenarioRow(scenario, idx) {
   `;
 }
 
+// After rendering, apply red border to empty fields if needed
 function applyInputErrorStyles() {
-  document.querySelectorAll('.scenario-row').forEach((row) => {
+  document.querySelectorAll('.scenario-row').forEach((row, idx) => {
     [
       'salary',
       'salaryIncrease',
@@ -108,33 +110,17 @@ function applyInputErrorStyles() {
       'years'
     ].forEach(field => {
       const input = row.querySelector(`.${field}`);
-      if (!input) return;
-      input.classList.remove('error');
-      input.style.display = ""; // Always visible
+      if (input) {
+        if (calculatePressed && (!input.value || input.value.trim() === "")) {
+          input.style.border = "2px solid #e53935";
+          input.style.background = "#fff5f5";
+        } else {
+          input.style.border = "";
+          input.style.background = "";
+        }
+      }
     });
   });
-
-  if (calculatePressed) {
-    document.body.classList.add('show-errors');
-    document.querySelectorAll('.scenario-row').forEach((row) => {
-      [
-        'salary',
-        'salaryIncrease',
-        'accountBalance',
-        'fmvPercent',
-        'growth',
-        'years'
-      ].forEach(field => {
-        const input = row.querySelector(`.${field}`);
-        if (input && (!input.value || input.value.trim() === "")) {
-          input.classList.add('error');
-          input.style.display = ""; // Always visible
-        }
-      });
-    });
-  } else {
-    document.body.classList.remove('show-errors');
-  }
 }
 
 function addNumberInputFormatting() {
@@ -178,7 +164,6 @@ function renderScenarios() {
     };
   });
   addNumberInputFormatting();
-  applyInputErrorStyles();
 }
 
 document.getElementById('addScenarioBtn').onclick = function() {
@@ -211,10 +196,10 @@ let esopChart = null;
 let lastBalances = [];
 
 document.getElementById('calculateBtn').onclick = function(e) {
-  e.preventDefault();
   calculatePressed = true;
   updateScenarioDataFromForm();
 
+  // Check if any required field is empty in any scenario
   let missing = false;
   for (const s of scenarios) {
     if (
@@ -230,6 +215,8 @@ document.getElementById('calculateBtn').onclick = function(e) {
     }
   }
   renderScenarios();
+  applyInputErrorStyles();
+
   if (missing) {
     document.getElementById('result').innerHTML = `<span style="color:#c62828;">Please fill all required fields above to calculate.</span>`;
     document.getElementById('downloadBtn').disabled = true;
@@ -435,6 +422,7 @@ document.getElementById('downloadBtn').onclick = function() {
 };
 
 document.getElementById('resetBtn').onclick = function() {
+  calculatePressed = false;
   scenarios = [{
     name: "Scenario 1",
     salary: "",
@@ -444,11 +432,8 @@ document.getElementById('resetBtn').onclick = function() {
     growth: "",
     years: ""
   }];
-  calculatePressed = false;
   renderScenarios();
-  document.getElementById('result').innerHTML = "";
-  document.getElementById('downloadBtn').disabled = true;
-  if (esopChart) esopChart.destroy();
+  applyInputErrorStyles();
 };
 
 document.addEventListener('input', function(e) {
@@ -462,12 +447,10 @@ document.addEventListener('input', function(e) {
 });
 
 renderScenarios();
-// Removed auto-calculate on load to prevent red error on page load
-// window.onload = () => {
-//   document.getElementById('calculateBtn').click();
-// };
-<div class="disclaimer-box">
-  <strong>Disclaimer:</strong><br>
-  This calculator is provided for general informational and illustrative purposes only and does not constitute financial, legal, or tax advice. The estimates generated are based on user-provided inputs and certain assumptions, which may not reflect actual plan performance, participant activity, or future outcomes. Actual results may vary significantly due to changes in company valuation, individual employment status, plan provisions, or other variables.<br><br>
-  We make no representations or warranties of any kind, express or implied, about the completeness, accuracy, reliability, or suitability of the calculator or the information provided. Use of this tool is at your own risk.
-</div>
+window.onload = () => {
+  document.getElementById('resetBtn').click();
+};
+
+document.getElementById('printBtn').onclick = function() {
+  window.print();
+};
