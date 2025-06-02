@@ -1,0 +1,406 @@
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  background: #f6f8fb;
+}
+body {
+  font-family: 'Inter', Arial, sans-serif;
+  color: #222;
+  min-height: 100vh;
+  height: 100vh;
+  box-sizing: border-box;
+}
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #2d6cdf;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.03);
+  padding: 1.5rem 0;
+  margin-bottom: 0.5rem;
+}
+.logo-title {
+  font-family: 'Montserrat', 'Inter', Arial, sans-serif;
+  font-weight: 700;
+  font-size: 2rem;
+  color: #fff;
+  letter-spacing: 1.5px;
+  text-align: center;
+  line-height: 1.2;
+  text-shadow: 0 2px 8px rgba(45, 108, 223, 0.08);
+  margin: 0;
+  padding: 0.2rem 0.5rem;
+  border-radius: 12px;
+  background: rgba(255,255,255,0.05);
+  max-width: 95vw;
+}
+@media (max-width: 600px) {
+  .logo-title {
+    font-size: 1.1rem;
+    padding: 0.2rem 0.2rem;
+  }
+}
+.main-flex {
+  display: flex;
+  flex-direction: row;
+  height: calc(100vh - 80px);
+  max-height: calc(100vh - 80px);
+  width: 100vw;
+  box-sizing: border-box;
+  gap: 0;
+}
+.container {
+  background: #fff;
+  width: 370px;
+  min-width: 320px;
+  max-width: 420px;
+  height: 100%;
+  box-shadow: 0 4px 24px rgba(45, 108, 223, 0.08);
+  border-radius: 0 18px 18px 0;
+  padding: 1.2rem 1.2rem 1.2rem 1.2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+  overflow-y: auto;
+}
+h1 {
+  text-align: center;
+  color: #2d6cdf;
+  font-size: 1.3rem;
+  margin-bottom: 0.2rem;
+}
+.subtitle {
+  text-align: center;
+  color: #6b7280;
+  font-size: 1rem;
+  margin-bottom: 0.7rem;
+}
+.disclaimer-box {
+  background: linear-gradient(120deg, #f5f7fa 60%, #e3f2fd 100%);
+  color: #222;
+  border-radius: 14px;
+  padding: 1.1rem 1.2rem 1.1rem 1.2rem;
+  margin-bottom: 1.2rem;
+  font-size: 1rem;
+  box-shadow: 0 4px 18px 0 rgba(67,160,71,0.07), 0 1.5px 6px 0 rgba(45,108,223,0.04);
+  line-height: 1.6;
+  border-left: 7px solid #2d6cdf;
+  border-right: 2px solid #e3f2fd;
+  transition: box-shadow 0.2s;
+  position: relative;
+  overflow: visible; /* allow content to expand */
+  word-break: break-word; /* wrap long words */
+  white-space: normal;    /* allow normal wrapping */
+}
+.disclaimer-box strong {
+  color: #2d6cdf;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  font-size: 1.07em;
+}
+.disclaimer-box::before {
+  content: "";
+  position: absolute;
+  top: -30px;
+  right: -60px;
+  width: 120px;
+  height: 120px;
+  background: radial-gradient(circle, #2d6cdf22 0%, #f5f7fa00 80%);
+  opacity: 0.3;
+  pointer-events: none;
+  z-index: 0;
+}
+.disclaimer-box * {
+  position: relative;
+  z-index: 1;
+}
+label {
+  font-size: 0.98rem;
+  color: #2d6cdf;
+  font-weight: 500;
+  margin-bottom: 0.2rem;
+  display: block;
+  position: relative;
+}
+input[type="number"], input[type="text"] {
+  padding: 0.5rem;
+  font-size: 1rem;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  background: #f3f6fa;
+  transition: border 0.2s, background 0.2s;
+  margin-top: 0.2rem;
+  margin-bottom: 0.7rem;
+  width: 100%;
+  box-sizing: border-box;
+  touch-action: manipulation;
+  font-family: inherit;
+}
+
+/* Only show error border/background after Calculate is pressed (add .show-errors to body) */
+body:not(.show-errors) .input-error,
+body:not(.show-errors) input[type="number"].error,
+body:not(.show-errors) input[type="text"].error {
+  display: none !important;
+  border: 1px solid #d1d5db !important;
+  background: #f3f6fa !important;
+}
+
+input[type="number"].error,
+input[type="text"].error {
+  border: 2px solid #e53935 !important;
+  background: #fff5f5 !important;
+}
+
+input[type="number"]:focus, input[type="text"]:focus {
+  border: 1.5px solid #2d6cdf;
+  outline: none;
+}
+button {
+  background: #2d6cdf;
+  color: #fff;
+  border: none;
+  padding: 0.7rem 1.2rem;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  margin-top: 0.3rem;
+  margin-right: 0.5rem;
+  transition: background 0.2s;
+  font-family: inherit;
+}
+button[disabled] {
+  background: #b0c4e7;
+  cursor: not-allowed;
+}
+button:hover, button:focus {
+  background: #1b4fa0;
+}
+.scenario-row {
+  border-bottom: 1px solid #e5e7eb;
+  padding-bottom: 0.7rem;
+  margin-bottom: 0.7rem;
+  position: relative;
+}
+.scenario-row:last-child {
+  border-bottom: none;
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+.remove-btn {
+  position: absolute;
+  right: 0;
+  top: 0;
+  background: #fff;
+  color: #e53935;
+  border: none;
+  font-size: 1.3rem;
+  cursor: pointer;
+  padding: 0 0.5rem;
+  line-height: 1;
+}
+.remove-btn:hover, .remove-btn:focus {
+  color: #b71c1c;
+}
+.result {
+  margin-top: 0.7rem;
+  font-size: 1.05rem;
+  color: #2d6cdf;
+  background: #f3f6fa;
+  padding: 0.7rem;
+  border-radius: 8px;
+  text-align: center;
+}
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.3rem;
+  justify-content: center;
+  margin-top: 0.7rem;
+}
+.additional-scenarios-title {
+  text-align: center;
+  color: #2d6cdf;
+  font-size: 1rem;
+  font-weight: 600;
+  margin: 1rem 0 0.3rem 0;
+  letter-spacing: 1px;
+}
+.highlight-input {
+  border: 2px solid #6c1e8f !important;
+  background: #f3e6fa !important;
+  transition: border 0.2s, background 0.2s;
+}
+.input-error {
+  color: #c62828;
+  font-size: 0.92rem;
+  margin: -0.5rem 0 0.5rem 0.1rem;
+  display: block;
+}
+.warning-icon {
+  color: #e53935;
+  font-size: 1.2em;
+  vertical-align: middle;
+  margin-left: 0.2em;
+}
+.help-icon {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  background: #6c1e8f;
+  color: #fff;
+  border-radius: 50%;
+  text-align: center;
+  font-size: 12px;
+  line-height: 16px;
+  margin-left: 5px;
+  cursor: pointer;
+  position: relative;
+}
+.help-tooltip {
+  display: none;
+  position: absolute;
+  left: 20px;
+  top: 0;
+  background: #fff;
+  color: #222;
+  border: 1px solid #6c1e8f;
+  border-radius: 6px;
+  padding: 7px 12px;
+  font-size: 0.95rem;
+  z-index: 10;
+  min-width: 180px;
+  box-shadow: 0 2px 8px rgba(108,30,143,0.08);
+}
+.help-icon:focus + .help-tooltip,
+.help-icon:hover + .help-tooltip {
+  display: block;
+}
+.right-panel {
+  flex: 1 1 0;
+  min-width: 0;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: stretch;
+  background: #fff;
+  border-radius: 18px 0 0 18px;
+  margin-left: 0.5rem;
+  box-shadow: 0 4px 24px rgba(45, 108, 223, 0.08);
+  padding: 1.2rem 1.2rem 1.2rem 1.2rem;
+  overflow: hidden;
+  position: relative;
+}
+.chart-title {
+  text-align: center;
+  color: #2d6cdf;
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  letter-spacing: 1px;
+}
+#esopChart {
+  display: block;
+  margin: 0 auto;
+  width: 100% !important;
+  height: 100% !important;
+  max-height: 100%;
+  background: #fff;
+}
+@media (max-width: 900px) {
+  .main-flex {
+    flex-direction: column;
+    height: auto;
+    max-height: none;
+  }
+  .container, .right-panel {
+    width: 100vw;
+    max-width: 100vw;
+    border-radius: 0;
+    margin: 0;
+    box-shadow: none;
+    padding: 0.7rem 0.2rem;
+  }
+  .right-panel {
+    margin-left: 0;
+    min-height: 300px;
+    height: 350px;
+  }
+  #esopChart {
+    height: 250px !important;
+  }
+  label, input, button {
+    font-size: 1.1rem !important;
+  }
+  input[type="number"], input[type="text"] {
+    padding: 0.7rem !important;
+  }
+  .actions {
+    flex-direction: column;
+    gap: 0.7rem;
+  }
+}
+@media print {
+  html, body {
+    background: #fff !important;
+    height: 100%;
+    min-height: 100%;
+  }
+  .header, .actions {
+    box-shadow: none !important;
+  }
+  .actions {
+    display: none !important;
+  }
+  .main-flex {
+    flex-direction: row !important;
+    height: 100vh !important;
+    max-height: 100vh !important;
+    gap: 0 !important;
+  }
+  .container, .right-panel {
+    border-radius: 0 !important;
+    margin: 0 !important;
+    box-shadow: none !important;
+    padding: 0.5rem 0.5rem !important;
+    height: 100vh !important;
+    max-height: 100vh !important;
+  }
+  .container {
+    width: 35vw !important;
+    min-width: 0 !important;
+    max-width: 40vw !important;
+    font-size: 0.9rem !important;
+    overflow: hidden !important;
+  }
+  .right-panel {
+    width: 65vw !important;
+    min-width: 0 !important;
+    max-width: 100vw !important;
+    height: 100vh !important;
+    max-height: 100vh !important;
+    padding: 0.5rem 0.5rem !important;
+  }
+  #esopChart {
+    max-width: 100vw !important;
+    height: 90vh !important;
+    min-height: 200px !important;
+  }
+  .scenario-row, .result, .chart-section {
+    page-break-inside: avoid !important;
+  }
+  .result {
+    padding: 0.5rem !important;
+  }
+  .chart-title {
+    font-size: 1rem !important;
+    margin-bottom: 0.5rem !important;
+  }
+  h1, .subtitle {
+    font-size: 1.1rem !important;
+    margin-bottom: 0.5rem !important;
+  }
+}

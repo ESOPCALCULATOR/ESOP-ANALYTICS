@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>ESOP Participant Calculator - Compare Scenarios</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-zoom@2.0.1/dist/chartjs-plugin-zoom.umd.min.js"></script>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="header">
+    <div class="logo-title">
+      ESOP Analytics<br>Participant Projection Calculator
+    </div>
+  </div>
+  <div class="main-flex">
+    <div class="container">
+      <h1>ESOP Participant Calculator</h1>
+      <div class="subtitle">Compare multiple ESOP scenarios</div>
+      <div class="disclaimer-box">
+        <strong>Disclaimer:</strong><br>
+        This calculator is provided for general informational and illustrative purposes only and does not constitute financial, legal, or tax advice. The estimates generated are based on user-provided inputs and certain assumptions, which may not reflect actual plan performance, participant activity, or future outcomes. Actual results may vary significantly due to changes in company valuation, individual employment status, plan provisions, or other variables.<br><br>
+        We make no representations or warranties of any kind, express or implied, about the completeness, accuracy, reliability, or suitability of the calculator or the information provided. Use of this tool is at your own risk.
+      </div>
+      <form id="scenariosForm" autocomplete="off">
+        <div id="scenariosArea"></div>
+        <div class="actions">
+          <button type="button" id="calculateBtn" aria-label="Calculate ESOP projection">Calculate</button>
+          <button type="button" id="addScenarioBtn" aria-label="Add scenario">+ Add Scenario</button>
+          <button type="button" id="downloadBtn" aria-label="Download CSV" disabled>Download CSV</button>
+          <button type="button" id="resetBtn" aria-label="Reset all scenarios">Reset</button>
+        </div>
+      </form>
+      <div class="result" id="result" aria-live="polite" role="status"></div>
+    </div>
+    <div class="right-panel">
+      <div class="chart-title">Projected ESOP Account Value Over Time</div>
+      <canvas id="esopChart"></canvas>
+    </div>
+  </div>
+  <script src="main-1.js"></script>
+</body>
+</html>
