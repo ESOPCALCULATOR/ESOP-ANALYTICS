@@ -102,6 +102,7 @@ h1 {
   white-space: normal;
   margin-top: 2rem;
   clear: both;
+  width: 100% !important;
 }
 .disclaimer-box strong {
   color: #1565c0;
@@ -297,12 +298,12 @@ button:hover, button:focus {
   letter-spacing: 1px;
 }
 #esopChart {
+  max-width: 100%;
+  width: 100%;
+  height: 600px;
+  min-height: 400px;
+  page-break-inside: avoid;
   display: block;
-  margin: 0 auto;
-  width: 100% !important;
-  height: 100% !important;
-  max-height: 100%;
-  background: #fff;
 }
 @media (max-width: 900px) {
   .main-flex {
@@ -341,7 +342,7 @@ button:hover, button:focus {
   html, body {
     background: #fff !important;
     color: #000 !important;
-    width: 100vw !important;
+    width: 100% !important;      /* Use 100% instead of 100vw */
     height: 100vh !important;
     margin: 0 !important;
     padding: 0 !important;
@@ -356,13 +357,13 @@ button:hover, button:focus {
   .main-flex {
     flex-direction: column !important;
     height: auto !important;
-    width: 100vw !important;
+    width: 100% !important;      /* Use 100% instead of 100vw */
     gap: 0 !important;
   }
   .container, .right-panel {
-    width: 100vw !important;
+    width: 100% !important;      /* Use 100% instead of 100vw */
     min-width: 0 !important;
-    max-width: 100vw !important;
+    max-width: 100% !important;
     border-radius: 0 !important;
     box-shadow: none !important;
     padding: 0.5rem !important;
@@ -381,7 +382,8 @@ button:hover, button:focus {
     margin-top: 2rem !important;
     display: block !important;
     clear: both !important;
-    width: 100vw !important;
+    width: 100% !important;      /* Use 100% instead of 100vw */
+    box-sizing: border-box !important;
     position: relative !important;
     z-index: 1 !important;
   }
@@ -389,10 +391,10 @@ button:hover, button:focus {
     display: none !important;
   }
   #esopChart {
-    max-width: 100vw !important;
-    width: 100vw !important;
-    height: 600px !important;      /* Increased height for print */
-    min-height: 400px !important;
+    max-width: 100% !important;
+    width: 100% !important;
+    height: 700px !important;
+    min-height: 500px !important;
     page-break-inside: avoid !important;
     display: block !important;
   }
@@ -426,6 +428,49 @@ button:hover, button:focus {
   * {
     max-height: none !important;
     height: auto !important;
+  }
+  html, body {
+    margin: 0 !important;
+    padding: 0 !important;
+    width: 100% !important;      /* Use 100% instead of 100vw */
+    box-sizing: border-box !important;
+  }
+  .container, .right-panel, .main-flex {
+    margin: 0 !important;
+    padding: 0 !important;
+    width: 100% !important;      /* Use 100% instead of 100vw */
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+  }
+  /* Optional: reduce disclaimer margin if needed */
+  .disclaimer-box {
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    width: 100% !important;      /* Use 100% instead of 100vw */
+    box-sizing: border-box !important;
+    page-break-inside: avoid !important;
+    display: block !important;
+    clear: both !important;
+    position: relative !important;
+    z-index: 1 !important;
+  }
+  /* Hide number input arrows when printing (Chrome, Safari, Edge) */
+  input[type="number"]::-webkit-inner-spin-button,
+  input[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none !important;
+    margin: 0 !important;
+    display: none !important;
+  }
+  /* Hide number input arrows for Firefox */
+  input[type="number"] {
+    -moz-appearance: textfield !important;
+    appearance: textfield !important;
+  }
+  /* Hide help icons and tooltips when printing */
+  .help-icon,
+  .help-tooltip {
+    display: none !important;
+    visibility: hidden !important;
   }
 }
 function applyInputErrorStyles() {
