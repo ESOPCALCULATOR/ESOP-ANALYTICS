@@ -132,6 +132,17 @@ html, body {
   filter: drop-shadow(0 16px 32px rgba(7, 21, 39, 0.6)) drop-shadow(0 0 30px rgba(255, 255, 255, 0.2));
 }
 
+/* === LOGO LINK STYLING === */
+
+.header a {
+  display: inline-block;
+  transition: all var(--transition-medium);
+}
+
+.header a:hover {
+  transform: scale(1.05);
+}
+
 /* === MAIN LAYOUT === */
 
 .main-flex {
@@ -860,7 +871,7 @@ button:disabled {
     touch-action: pan-x pan-y;
   }
   
-  /* Mobile-friendly results layout */
+  /* Mobile-friendly results layout with much smaller fonts */
   .comparison-table {
     display: none; /* Hide complex table on mobile */
   }
@@ -869,40 +880,40 @@ button:disabled {
   .five-year-breakdown {
     display: flex;
     flex-direction: column;
-    gap: var(--spacing-lg);
+    gap: var(--spacing-sm);
   }
   
   /* Mobile scenario containers */
   .mobile-scenario-container {
     background: rgba(7, 21, 39, 0.6);
-    border-radius: var(--radius-md);
-    padding: var(--spacing-md);
-    border: 2px solid var(--border-primary);
-    margin-bottom: var(--spacing-md);
+    border-radius: var(--radius-sm);
+    padding: var(--spacing-sm);
+    border: 1px solid var(--border-primary);
+    margin-bottom: var(--spacing-xs);
   }
   
   .mobile-scenario-title {
     background: var(--bg-accent);
     color: var(--text-dark);
-    padding: var(--spacing-sm);
-    border-radius: var(--radius-sm);
+    padding: var(--spacing-xs);
+    border-radius: var(--radius-xs);
     text-align: center;
     font-weight: var(--font-weight-bold);
-    margin-bottom: var(--spacing-md);
-    font-size: 0.9rem;
+    margin-bottom: var(--spacing-xs);
+    font-size: 0.7rem;
     text-transform: uppercase;
-    letter-spacing: 0.5px;
+    letter-spacing: 0.3px;
   }
   
   .mobile-year-row {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: var(--spacing-sm);
-    border-bottom: 1px solid rgba(227, 158, 43, 0.3);
+    padding: var(--spacing-xs);
+    border-bottom: 1px solid rgba(227, 158, 43, 0.2);
     background: rgba(7, 21, 39, 0.3);
-    border-radius: var(--radius-sm);
-    margin-bottom: var(--spacing-xs);
+    border-radius: var(--radius-xs);
+    margin-bottom: 2px;
   }
   
   .mobile-year-row:last-child {
@@ -913,32 +924,32 @@ button:disabled {
   .mobile-year-label {
     font-weight: var(--font-weight-bold);
     color: var(--text-primary);
-    font-size: 0.8rem;
-    min-width: 60px;
+    font-size: 0.65rem;
+    min-width: 45px;
   }
   
   .mobile-year-data {
     display: flex;
     flex-direction: column;
     align-items: flex-end;
-    gap: 0.1rem;
+    gap: 1px;
     flex: 1;
   }
   
   .mobile-year-data .salary {
-    font-size: 0.7rem;
+    font-size: 0.55rem;
     color: var(--medium-blue);
     font-weight: var(--font-weight-medium);
   }
   
   .mobile-year-data .balance {
-    font-size: 0.8rem;
+    font-size: 0.6rem;
     font-weight: var(--font-weight-bold);
     color: var(--text-primary);
   }
   
   .mobile-year-data .multiple {
-    font-size: 0.65rem;
+    font-size: 0.5rem;
     color: var(--teal-blue);
     font-weight: var(--font-weight-medium);
     opacity: 0.9;
@@ -1019,7 +1030,7 @@ button:disabled {
     padding: var(--spacing-md);
   }
   
-  /* Enhanced mobile results styling */
+  /* Enhanced mobile results styling with tiny fonts */
   .comparison-table {
     font-size: 0.75rem;
     margin-bottom: var(--spacing-md);
@@ -1044,6 +1055,74 @@ button:disabled {
   
   .scenario-data .multiple {
     font-size: 0.6rem;
+  }
+  
+  /* Force mobile scenario layout on small screens */
+  .mobile-scenario-container {
+    background: rgba(7, 21, 39, 0.6) !important;
+    border-radius: var(--radius-xs) !important;
+    padding: var(--spacing-xs) !important;
+    border: 1px solid var(--border-primary) !important;
+    margin-bottom: 2px !important;
+    display: block !important;
+  }
+  
+  .mobile-scenario-title {
+    background: var(--bg-accent) !important;
+    color: var(--text-dark) !important;
+    padding: 2px var(--spacing-xs) !important;
+    border-radius: 2px !important;
+    text-align: center !important;
+    font-weight: var(--font-weight-bold) !important;
+    margin-bottom: 2px !important;
+    font-size: 0.6rem !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.2px !important;
+  }
+  
+  .mobile-year-row {
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    padding: 1px var(--spacing-xs) !important;
+    border-bottom: 1px solid rgba(227, 158, 43, 0.2) !important;
+    background: rgba(7, 21, 39, 0.3) !important;
+    border-radius: 1px !important;
+    margin-bottom: 1px !important;
+  }
+  
+  .mobile-year-label {
+    font-weight: var(--font-weight-bold) !important;
+    color: var(--text-primary) !important;
+    font-size: 0.55rem !important;
+    min-width: 35px !important;
+  }
+  
+  .mobile-year-data {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: flex-end !important;
+    gap: 0px !important;
+    flex: 1 !important;
+  }
+  
+  .mobile-year-data .salary {
+    font-size: 0.45rem !important;
+    color: var(--medium-blue) !important;
+    font-weight: var(--font-weight-medium) !important;
+  }
+  
+  .mobile-year-data .balance {
+    font-size: 0.5rem !important;
+    font-weight: var(--font-weight-bold) !important;
+    color: var(--text-primary) !important;
+  }
+  
+  .mobile-year-data .multiple {
+    font-size: 0.4rem !important;
+    color: var(--teal-blue) !important;
+    font-weight: var(--font-weight-medium) !important;
+    opacity: 0.9 !important;
   }
   
   /* Ensure no pseudo-elements create unwanted content */
@@ -1334,17 +1413,47 @@ button:disabled {
 
 .detailed-results {
   animation: fadeIn 0.5s ease-out;
-}
-
-/* Smaller font sizes for mobile inputs */
-input[type="text"], input[type="number"] {
-  font-size: 0.8rem;
-  padding: 0.6rem 0.8rem;
-}
-
-label {
-  font-size: 0.8rem;
-}
+}  /* Much smaller font sizes for mobile inputs and buttons */
+  input[type="text"], input[type="number"] {
+    font-size: 0.7rem;
+    padding: 0.4rem 0.6rem;
+    margin-bottom: 0.6rem;
+  }
+  
+  label {
+    font-size: 0.7rem;
+    margin-bottom: 0.2rem;
+  }
+  
+  /* Smaller mobile buttons */
+  .actions button {
+    max-width: 100%;
+    min-width: 100%;
+    font-size: 0.7rem;
+    padding: 0.6rem 0.8rem;
+    min-width: 120px;
+  }
+  
+  /* Smaller scenario inputs */
+  .scenario-name {
+    font-size: 0.7rem !important;
+    padding: 0.4rem !important;
+  }
+  
+  /* Compact scenario containers */
+  .scenario-row {
+    padding: var(--spacing-sm);
+    margin-bottom: var(--spacing-sm);
+  }
+  
+  /* Smaller remove buttons */
+  .remove-btn {
+    width: 20px;
+    height: 20px;
+    font-size: 0.9rem;
+    right: 0.3rem;
+    top: 0.3rem;
+  }
 
 /* Smaller disclaimer font on mobile */
 .disclaimer-box {
@@ -1355,17 +1464,52 @@ label {
 
 .disclaimer-box strong {
   font-size: 0.85rem !important;
-}
-
-/* Even smaller fonts for very small mobile screens */
-input[type="text"], input[type="number"] {
-  font-size: 0.75rem;
-  padding: 0.5rem 0.7rem;
-}
-
-label {
-  font-size: 0.75rem;
-}
+}  /* Ultra-compact fonts and controls for very small mobile screens */
+  input[type="text"], input[type="number"] {
+    font-size: 0.65rem;
+    padding: 0.3rem 0.5rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  label {
+    font-size: 0.65rem;
+    margin-bottom: 0.15rem;
+  }
+  
+  /* Ultra-compact mobile buttons */
+  .actions button {
+    font-size: 0.65rem;
+    padding: 0.5rem 0.6rem;
+    min-width: 100px;
+    margin-bottom: 0.3rem;
+  }
+  
+  /* Ultra-compact scenario inputs */
+  .scenario-name {
+    font-size: 0.65rem !important;
+    padding: 0.3rem !important;
+  }
+  
+  /* Very compact scenario containers */
+  .scenario-row {
+    padding: var(--spacing-xs);
+    margin-bottom: var(--spacing-xs);
+  }
+  
+  /* Tiny remove buttons */
+  .remove-btn {
+    width: 18px;
+    height: 18px;
+    font-size: 0.8rem;
+    right: 0.2rem;
+    top: 0.2rem;
+  }
+  
+  /* Compact title */
+  h1 {
+    font-size: 1rem;
+    margin-bottom: var(--spacing-md);
+  }
 
 /* Very small disclaimer on small mobile */
 .disclaimer-box {

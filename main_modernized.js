@@ -308,8 +308,10 @@ function displayResults(results) {
     return;
   }
 
-  // Check if mobile
-  const isMobile = window.innerWidth <= 768;
+  // Check if mobile - improved detection
+  const isMobile = window.innerWidth <= 768 || /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+  
+  console.log('Mobile detection:', isMobile, 'Screen width:', window.innerWidth);
   
   let html = '<div class="results-container">';
   
