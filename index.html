@@ -164,12 +164,10 @@
   </style>
 </head>
 <body>
-  <div class="header">
-    <div style="display: flex; align-items: center; gap: 1rem;">
-      <img src="logo.png" alt="Company Logo" style="height:48px; width:auto; display:block;">
-      <div class="logo-title">
-        ESOP Analytics<br>Participant Projection Calculator
-      </div>
+  <div class="header" style="display: flex; align-items: center; gap: 2rem; padding: 1.2rem 2vw;">
+    <img src="logo.png" alt="Company Logo" style="height:240px; width:auto; display:block;">
+    <div class="logo-title" style="font-size: 3rem; font-weight: bold; color: #e39e2b; line-height: 1.1; text-align: center; width:100%;">
+      Participant Projection Calculator
     </div>
   </div>
   <div class="main-flex">
@@ -179,11 +177,11 @@
       <form id="scenariosForm" autocomplete="off">
         <div id="scenariosArea"></div>
         <div class="actions">
-          <button type="button" id="calculateBtn" aria-label="Calculate ESOP projection">Calculate</button>
-          <button type="button" id="addScenarioBtn" aria-label="Add scenario">+ Add Scenario</button>
-          <button type="button" id="downloadBtn" aria-label="Download CSV" disabled>Download CSV</button>
-          <button type="button" id="resetBtn" aria-label="Reset all scenarios">Reset</button>
-          <button type="button" id="printBtn" aria-label="Print this page">Print</button>
+          <button type="button" id="addScenarioBtn" class="app-btn">Add Scenario</button>
+          <button type="button" id="calculateBtn" class="app-btn">Calculate</button>
+          <button type="button" id="downloadBtn" class="app-btn" disabled>Download CSV</button>
+          <button type="button" id="resetBtn" class="app-btn">Reset</button>
+          <button type="button" id="printBtn" class="app-btn">Print</button>
         </div>
       </form>
       <div class="result" id="result" aria-live="polite" role="status"></div>
