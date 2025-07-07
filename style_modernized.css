@@ -871,6 +871,26 @@ button:disabled {
     touch-action: pan-x pan-y;
   }
   
+  /* Force horizontal layout for mobile scenarios */
+  .detailed-results .five-year-breakdown {
+    display: flex !important;
+    flex-direction: row !important;
+    flex-wrap: nowrap !important;
+    overflow-x: auto !important;
+    gap: var(--spacing-xs) !important;
+    padding: var(--spacing-xs);
+    margin-top: var(--spacing-sm);
+    width: 100%;
+  }
+  
+  /* Ensure mobile scenario containers take equal space */
+  .detailed-results .mobile-scenario-container {
+    flex: 1 1 0 !important;
+    min-width: 150px !important;
+    max-width: none !important;
+    margin: 0 !important;
+  }
+  
   /* Mobile-friendly results layout with much smaller fonts */
   .comparison-table {
     display: none; /* Hide complex table on mobile */
@@ -878,11 +898,13 @@ button:disabled {
   
   /* Create mobile scenario blocks - side by side layout */
   .five-year-breakdown {
-    display: flex;
-    flex-direction: row;
+    display: flex !important;
+    flex-direction: row !important;
     gap: var(--spacing-xs);
     overflow-x: auto;
     padding-bottom: var(--spacing-xs);
+    margin-top: var(--spacing-sm);
+    align-items: stretch;
   }
   
   /* Mobile scenario containers - horizontal layout */
@@ -894,6 +916,8 @@ button:disabled {
     flex: 1;
     min-width: 0;
     margin-bottom: 0;
+    display: flex;
+    flex-direction: column;
   }
   
   .mobile-scenario-title {
