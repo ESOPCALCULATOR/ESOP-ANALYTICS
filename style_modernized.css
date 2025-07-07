@@ -860,66 +860,88 @@ button:disabled {
     touch-action: pan-x pan-y;
   }
   
-  /* Simplify results tables for mobile */
+  /* Mobile-friendly results layout */
   .comparison-table {
-    font-size: 0.8rem;
-    border-radius: var(--radius-md);
-    margin-bottom: var(--spacing-lg);
-    box-shadow: var(--shadow-md);
+    display: none; /* Hide complex table on mobile */
   }
   
-  .comparison-table th {
-    font-size: 0.75rem;
-    padding: var(--spacing-sm);
-    text-align: center;
-  }
-  
-  .comparison-table td {
-    padding: var(--spacing-sm);
-    text-align: center;
-    vertical-align: middle;
-  }
-  
-  .comparison-table td:first-child {
-    font-size: 0.8rem;
-    font-weight: var(--font-weight-bold);
-    background: rgba(7, 21, 39, 0.6);
-    text-align: center;
-  }
-  
-  /* Clean up scenario data display */
-  .scenario-data {
+  /* Create mobile scenario blocks */
+  .five-year-breakdown {
     display: flex;
     flex-direction: column;
-    gap: 0.15rem;
-    align-items: center;
-    line-height: 1.2;
+    gap: var(--spacing-lg);
   }
   
-  .scenario-data .salary {
+  /* Mobile scenario containers */
+  .mobile-scenario-container {
+    background: rgba(7, 21, 39, 0.6);
+    border-radius: var(--radius-md);
+    padding: var(--spacing-md);
+    border: 2px solid var(--border-primary);
+    margin-bottom: var(--spacing-md);
+  }
+  
+  .mobile-scenario-title {
+    background: var(--bg-accent);
+    color: var(--text-dark);
+    padding: var(--spacing-sm);
+    border-radius: var(--radius-sm);
+    text-align: center;
+    font-weight: var(--font-weight-bold);
+    margin-bottom: var(--spacing-md);
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+  
+  .mobile-year-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: var(--spacing-sm);
+    border-bottom: 1px solid rgba(227, 158, 43, 0.3);
+    background: rgba(7, 21, 39, 0.3);
+    border-radius: var(--radius-sm);
+    margin-bottom: var(--spacing-xs);
+  }
+  
+  .mobile-year-row:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+  }
+  
+  .mobile-year-label {
+    font-weight: var(--font-weight-bold);
+    color: var(--text-primary);
+    font-size: 0.8rem;
+    min-width: 60px;
+  }
+  
+  .mobile-year-data {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 0.1rem;
+    flex: 1;
+  }
+  
+  .mobile-year-data .salary {
     font-size: 0.7rem;
     color: var(--medium-blue);
     font-weight: var(--font-weight-medium);
   }
   
-  .scenario-data .balance {
+  .mobile-year-data .balance {
     font-size: 0.8rem;
     font-weight: var(--font-weight-bold);
     color: var(--text-primary);
   }
   
-  .scenario-data .multiple {
+  .mobile-year-data .multiple {
     font-size: 0.65rem;
     color: var(--teal-blue);
     font-weight: var(--font-weight-medium);
     opacity: 0.9;
-  }
-  
-  /* Remove any unwanted pseudo-elements */
-  .comparison-table td:before,
-  .comparison-table td:after {
-    display: none !important;
-    content: none !important;
   }
   
   .header img {
@@ -1312,4 +1334,46 @@ button:disabled {
 
 .detailed-results {
   animation: fadeIn 0.5s ease-out;
+}
+
+/* Smaller font sizes for mobile inputs */
+input[type="text"], input[type="number"] {
+  font-size: 0.8rem;
+  padding: 0.6rem 0.8rem;
+}
+
+label {
+  font-size: 0.8rem;
+}
+
+/* Smaller disclaimer font on mobile */
+.disclaimer-box {
+  font-size: 0.75rem !important;
+  line-height: 1.4 !important;
+  padding: var(--spacing-md) !important;
+}
+
+.disclaimer-box strong {
+  font-size: 0.85rem !important;
+}
+
+/* Even smaller fonts for very small mobile screens */
+input[type="text"], input[type="number"] {
+  font-size: 0.75rem;
+  padding: 0.5rem 0.7rem;
+}
+
+label {
+  font-size: 0.75rem;
+}
+
+/* Very small disclaimer on small mobile */
+.disclaimer-box {
+  font-size: 0.7rem !important;
+  line-height: 1.3 !important;
+  padding: var(--spacing-sm) !important;
+}
+
+.disclaimer-box strong {
+  font-size: 0.8rem !important;
 }

@@ -307,50 +307,86 @@ function displayResults(results) {
     detailedDiv.innerHTML = '';
     return;
   }
+
+  // Check if mobile
+  const isMobile = window.innerWidth <= 768;
   
-  // Create side-by-side comparison table
   let html = '<div class="results-container">';
   
-  // Side-by-side interval comparison
-  html += '<div class="five-year-breakdown">';
-  html += '<table class="interval-table comparison-table">';
-  html += '<thead><tr><th>Year</th>';
-  
-  // Add header for each scenario
-  results.forEach(result => {
-    html += `<th>${result.name}<br><small>Salary | Balance | Multiple</small></th>`;
-  });
-  html += '</tr></thead><tbody>';
-  
-  // Get the maximum number of projections to ensure we cover all years
-  const maxProjections = Math.max(...results.map(r => r.projections.length));
-  
-  // Show every year
-  for (let i = 0; i < maxProjections; i++) {
-    const year = results[0].projections[i]?.year || (i + 1);
-    html += `<tr><td><strong>Year ${year}</strong></td>`;
+  if (isMobile) {
+    // Mobile layout: separate containers for each scenario
+    html += '<div class="five-year-breakdown">';
     
     results.forEach(result => {
-      if (i < result.projections.length) {
-        const projection = result.projections[i];
+      html += `
+        <div class="mobile-scenario-container">
+          <div class="mobile-scenario-title">${result.name}</div>
+      `;
+      
+      // Add year-by-year data for this scenario
+      result.projections.forEach(projection => {
         const multiple = projection.salary > 0 ? (projection.balance / projection.salary).toFixed(1) : '0.0';
         html += `
-          <td class="scenario-data">
-            <div class="salary">${formatCurrency(projection.salary)}</div>
-            <div class="balance"><strong>${formatCurrency(projection.balance)}</strong></div>
-            <div class="multiple">${multiple}x</div>
-          </td>
+          <div class="mobile-year-row">
+            <div class="mobile-year-label">Year ${projection.year}</div>
+            <div class="mobile-year-data">
+              <div class="salary">${formatCurrency(projection.salary)}</div>
+              <div class="balance"><strong>${formatCurrency(projection.balance)}</strong></div>
+              <div class="multiple">${multiple}x</div>
+            </div>
+          </div>
         `;
-      } else {
-        html += '<td class="scenario-data">-</td>';
-      }
+      });
+      
+      html += '</div>'; // Close mobile-scenario-container
     });
-    html += '</tr>';
+    
+    html += '</div>'; // Close five-year-breakdown
+  } else {
+    // Desktop layout: side-by-side comparison table
+    html += '<div class="five-year-breakdown">';
+    html += '<table class="interval-table comparison-table">';
+    html += '<thead><tr><th>Year</th>';
+    
+    // Add header for each scenario
+    results.forEach(result => {
+      html += `<th>${result.name}<br><small>Salary | Balance | Multiple</small></th>`;
+    });
+    html += '</tr></thead><tbody>';
+    
+    // Get the maximum number of projections to ensure we cover all years
+    const maxProjections = Math.max(...results.map(r => r.projections.length));
+    
+    // Show every year
+    for (let i = 0; i < maxProjections; i++) {
+      const year = results[0].projections[i]?.year || (i + 1);
+      html += `<tr><td><strong>Year ${year}</strong></td>`;
+      
+      results.forEach(result => {
+        if (i < result.projections.length) {
+          const projection = result.projections[i];
+          const multiple = projection.salary > 0 ? (projection.balance / projection.salary).toFixed(1) : '0.0';
+          html += `
+            <td class="scenario-data">
+              <div class="salary">${formatCurrency(projection.salary)}</div>
+              <div class="balance"><strong>${formatCurrency(projection.balance)}</strong></div>
+              <div class="multiple">${multiple}x</div>
+            </td>
+          `;
+        } else {
+          html += '<td class="scenario-data">-</td>';
+        }
+      });
+      html += '</tr>';
+    }
+    
+    html += '</tbody></table></div>';
   }
   
-  html += '</tbody></table></div></div>';
+  html += '</div>';
   detailedDiv.innerHTML = html;
   
+  // Update print results
   // Update print results
   updatePrintResults(results);
 }
@@ -597,6 +633,14 @@ function initializeCalculator() {
   
   // Initial render
   renderScenarios();
+  
+  // Add window resize listener to handle orientation changes
+  window.addEventListener('resize', () => {
+    // Re-render results if they exist
+    if (chartData && chartData.length > 0) {
+      displayResults(chartData);
+    }
+  });
   
   console.log('ESOP PROJECTION CALCULATOR initialized successfully');
 }
