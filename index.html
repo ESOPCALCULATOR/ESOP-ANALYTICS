@@ -19,7 +19,8 @@
       gap: 0;
     }
     .container {
-      background: #fff;
+      background: #0e4d64;
+      color: #e39e2b;
       width: 370px;
       min-width: 320px;
       max-width: 420px;
@@ -87,9 +88,10 @@
     input[type="number"], input[type="text"] {
       padding: 0.5rem;
       font-size: 1rem;
-      border: 1px solid #d1d5db;
+      border: 1px solid #e39e2b;
       border-radius: 8px;
-      background: #f3f6fa;
+      background: #071527;
+      color: #e39e2b;
       transition: border 0.2s;
       margin-top: 0.2rem;
       margin-bottom: 0.7rem;
@@ -97,6 +99,10 @@
       box-sizing: border-box;
       touch-action: manipulation;
       font-family: inherit;
+    }
+    input[type="number"]:focus, input[type="text"]:focus {
+      border: 1.5px solid #e39e2b;
+      outline: none;
     }
     .actions {
       display: flex;
@@ -111,32 +117,65 @@
       padding: 0.7rem 1.2rem;
       border-radius: 7px;
       border: none;
-      background: #2d6cdf;
-      color: #fff;
+      background: #e39e2b;
+      color: #071527;
       font-weight: 600;
       font-size: 1.05rem;
       cursor: pointer;
-      transition: background 0.18s;
+      transition: background 0.18s, color 0.18s;
     }
     .actions button:disabled {
       background: #b0b8c1;
+      color: #fff;
       cursor: not-allowed;
     }
     .actions button:not(:disabled):hover {
-      background: #174ea6;
+      background: #0e4d64;
+      color: #e39e2b;
+    }
+    @media print {
+      .highlight-input,
+      .highlight-input:focus {
+        background: none !important;
+        border: 1px solid #bbb !important;
+        box-shadow: none !important;
+      }
+      input, label, .scenario-title {
+        font-size: 12pt !important;
+        width: auto !important;
+        max-width: 100% !important;
+      }
+      button, #addScenarioBtn, #calculateBtn, #downloadBtn, #resetBtn, #printBtn,
+      .remove-btn, .help-icon, .help-tooltip {
+        display: none !important;
+      }
+      body, .scenario-row, #scenariosArea, #result {
+        width: 100% !important;
+        max-width: 100% !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        box-sizing: border-box !important;
+      }
+      #esopChart {
+        max-width: 100% !important;
+        height: auto !important;
+      }
     }
   </style>
 </head>
 <body>
   <div class="header">
-    <div class="logo-title">
-      ESOP Analytics<br>Participant Projection Calculator
+    <div style="display: flex; align-items: center; gap: 1rem;">
+      <img src="logo.png" alt="Company Logo" style="height:48px; width:auto; display:block;">
+      <div class="logo-title">
+        ESOP Analytics<br>Participant Projection Calculator
+      </div>
     </div>
   </div>
   <div class="main-flex">
     <div class="container">
       <h1>ESOP Participant Calculator</h1>
-      <div class="subtitle">Compare multiple ESOP scenarios</div>
+      <div class="subtitle" id="subtitle" style="display:none;">Compare multiple ESOP scenarios</div>
       <form id="scenariosForm" autocomplete="off">
         <div id="scenariosArea"></div>
         <div class="actions">

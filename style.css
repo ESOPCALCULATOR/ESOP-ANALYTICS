@@ -2,11 +2,13 @@ html, body {
   height: 100%;
   margin: 0;
   padding: 0;
-  background: #f6f8fb;
+  background: #071527;
+  color: #e39e2b;
 }
 body {
+  background: #071527;
+  color: #e39e2b;
   font-family: 'Inter', Arial, sans-serif;
-  color: #222;
   min-height: 100vh;
   height: 100vh;
   box-sizing: border-box;
@@ -15,33 +17,36 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  background: #2d6cdf;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.03);
+  background: #0e4d64;
+  color: #e39e2b;
+  box-shadow: 0 2px 8px rgba(14,77,100,0.03);
   padding: 1.5rem 0;
   margin-bottom: 0.5rem;
+}
+.header img {
+  height: 48px;
+  width: auto;
+  margin-right: 0.7rem;
+  vertical-align: middle;
 }
 .logo-title {
   font-family: 'Montserrat', 'Inter', Arial, sans-serif;
   font-weight: 700;
   font-size: 2rem;
-  color: #fff;
+  color: #e39e2b;
   letter-spacing: 1.5px;
   text-align: center;
   line-height: 1.2;
-  text-shadow: 0 2px 8px rgba(45, 108, 223, 0.08);
+  text-shadow: 0 2px 8px rgba(227, 158, 43, 0.08);
   margin: 0;
   padding: 0.2rem 0.5rem;
   border-radius: 12px;
-  background: rgba(255,255,255,0.05);
+  background: rgba(14,77,100,0.07);
   max-width: 95vw;
   display: flex;
   align-items: center;
   gap: 0.7rem;
-}
-.logo-title img {
-  height: 38px;
-  width: auto;
-  display: inline-block;
+  justify-content: center;
 }
 @media (max-width: 600px) {
   .logo-title {
@@ -59,12 +64,13 @@ body {
   gap: 0;
 }
 .container {
-  background: #fff;
+  background: #0e4d64;
+  color: #e39e2b;
   width: 370px;
   min-width: 320px;
   max-width: 420px;
   height: 100%;
-  box-shadow: 0 4px 24px rgba(45, 108, 223, 0.08);
+  box-shadow: 0 4px 24px rgba(14,77,100, 0.08);
   border-radius: 0 18px 18px 0;
   padding: 1.2rem 1.2rem 1.2rem 1.2rem;
   display: flex;
@@ -72,29 +78,32 @@ body {
   gap: 0.7rem;
   overflow-y: auto;
 }
+h1, .subtitle, label, .additional-scenarios-title, .result {
+  color: #e39e2b !important;
+}
 h1 {
   text-align: center;
-  color: #2d6cdf;
+  color: #e39e2b;
   font-size: 1.3rem;
   margin-bottom: 0.2rem;
 }
 .subtitle {
   text-align: center;
-  color: #6b7280;
+  color: #e39e2b;
   font-size: 1rem;
   margin-bottom: 0.7rem;
 }
 .disclaimer-box {
-  background: linear-gradient(120deg, #e3f2fd 60%, #bbdefb 100%);
-  color: #174ea6;
+  background: #e39e2b;
+  color: #071527;
   border-radius: 14px;
   padding: 1.1rem 1.2rem 1.1rem 1.2rem;
   margin-bottom: 1.2rem;
   font-size: 1rem;
-  box-shadow: 0 4px 18px 0 rgba(45,108,223,0.09), 0 1.5px 6px 0 rgba(45,108,223,0.04);
+  box-shadow: 0 4px 18px 0 rgba(14,77,100,0.09), 0 1.5px 6px 0 rgba(14,77,100,0.04);
   line-height: 1.6;
-  border-left: 7px solid #2d6cdf;
-  border-right: 2px solid #bbdefb;
+  border-left: 7px solid #0e4d64;
+  border-right: 2px solid #0e4d64;
   transition: box-shadow 0.2s;
   position: relative;
   overflow: visible;
@@ -103,24 +112,23 @@ h1 {
   margin-top: 2rem;
   clear: both;
   width: 100% !important;
+  margin-left: 1vw;
+  margin-right: 1vw;
+  margin-top: 1rem;
+  margin-bottom: 0.5rem;
+  padding: 0.7rem 1vw;
+  box-sizing: border-box;
+  width: auto;
+  max-width: 98vw;
 }
 .disclaimer-box strong {
-  color: #1565c0;
+  color: #0e4d64;
   font-weight: 700;
   letter-spacing: 0.5px;
   font-size: 1.07em;
 }
 .disclaimer-box::before {
-  content: "";
-  position: absolute;
-  top: -30px;
-  right: -60px;
-  width: 120px;
-  height: 120px;
-  background: radial-gradient(circle, #fff3 0%, #6c1e8f00 80%);
-  opacity: 0.5;
-  pointer-events: none;
-  z-index: 0;
+  display: none;
 }
 .disclaimer-box * {
   position: relative;
@@ -128,19 +136,20 @@ h1 {
 }
 label {
   font-size: 0.98rem;
-  color: #2d6cdf;
+  color: #e39e2b;
   font-weight: 500;
   margin-bottom: 0.2rem;
   display: block;
   position: relative;
 }
 input[type="number"], input[type="text"] {
+  border: 2px solid #071527;
+  background: #071527;
+  color: #e39e2b;
   padding: 0.5rem;
   font-size: 1rem;
-  border: 1px solid #d1d5db;
   border-radius: 8px;
-  background: #f3f6fa;
-  transition: border 0.2s;
+  transition: border 0.2s, background 0.2s;
   margin-top: 0.2rem;
   margin-bottom: 0.7rem;
   width: 100%;
@@ -149,12 +158,18 @@ input[type="number"], input[type="text"] {
   font-family: inherit;
 }
 input[type="number"]:focus, input[type="text"]:focus {
-  border: 1.5px solid #2d6cdf;
+  border: 2.5px solid #e39e2b;
   outline: none;
 }
+
+/* Highlight empty required fields with #e39e2b border and lighter background */
+input.input-error, input:invalid {
+  border: 2px solid #e39e2b !important;
+  background: #2d1e09 !important;
+}
 button {
-  background: #2d6cdf;
-  color: #fff;
+  background: #e39e2b;
+  color: #071527;
   border: none;
   padding: 0.7rem 1.2rem;
   border-radius: 8px;
@@ -167,14 +182,39 @@ button {
   font-family: inherit;
 }
 button[disabled] {
-  background: #b0c4e7;
+  background: #b0b8c1;
   cursor: not-allowed;
 }
 button:hover, button:focus {
-  background: #1b4fa0;
+  background: #0e4d64;
+  color: #e39e2b;
+}
+.actions button {
+  background: #e39e2b;
+  color: #071527;
+  border: none;
+  padding: 0.7rem 1.2rem;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  margin-top: 0.3rem;
+  margin-right: 0.5rem;
+  transition: background 0.2s;
+  font-family: inherit;
+}
+.actions button[disabled] {
+  background: #b0b8c1;
+  color: #fff;
+  cursor: not-allowed;
+}
+.actions button:not(:disabled):hover,
+.actions button:not(:disabled):focus {
+  background: #0e4d64;
+  color: #e39e2b;
 }
 .scenario-row {
-  border-bottom: 1px solid #e5e7eb;
+  border-bottom: 1px solid #e39e2b;
   padding-bottom: 0.7rem;
   margin-bottom: 0.7rem;
   position: relative;
@@ -188,8 +228,8 @@ button:hover, button:focus {
   position: absolute;
   right: 0;
   top: 0;
-  background: #fff;
-  color: #e53935;
+  background: #0e4d64;
+  color: #e39e2b;
   border: none;
   font-size: 1.3rem;
   cursor: pointer;
@@ -197,13 +237,14 @@ button:hover, button:focus {
   line-height: 1;
 }
 .remove-btn:hover, .remove-btn:focus {
-  color: #b71c1c;
+  color: #071527;
+  background: #e39e2b;
 }
 .result {
   margin-top: 0.7rem;
   font-size: 1.05rem;
-  color: #2d6cdf;
-  background: #f3f6fa;
+  color: #e39e2b;
+  background: #071527;
   padding: 0.7rem;
   border-radius: 8px;
   text-align: center;
@@ -217,25 +258,25 @@ button:hover, button:focus {
 }
 .additional-scenarios-title {
   text-align: center;
-  color: #2d6cdf;
+  color: #e39e2b;
   font-size: 1rem;
   font-weight: 600;
   margin: 1rem 0 0.3rem 0;
   letter-spacing: 1px;
 }
 .highlight-input {
-  border: 2px solid #6c1e8f !important;
-  background: #f3e6fa !important;
+  border: 2px solid #e39e2b !important;
+  background: #0e4d64 !important;
   transition: border 0.2s, background 0.2s;
 }
 .input-error {
-  color: #c62828;
+  color: #e39e2b;
   font-size: 0.92rem;
   margin: -0.5rem 0 0.5rem 0.1rem;
   display: block;
 }
 .warning-icon {
-  color: #e53935;
+  color: #e39e2b;
   font-size: 1.2em;
   vertical-align: middle;
   margin-left: 0.2em;
@@ -244,8 +285,9 @@ button:hover, button:focus {
   display: inline-block;
   width: 16px;
   height: 16px;
-  background: #6c1e8f;
-  color: #fff;
+  background: #0e4d64;
+  color: #e39e2b;
+  border: 1px solid #e39e2b;
   border-radius: 50%;
   text-align: center;
   font-size: 12px;
@@ -259,15 +301,15 @@ button:hover, button:focus {
   position: absolute;
   left: 20px;
   top: 0;
-  background: #fff;
-  color: #222;
-  border: 1px solid #6c1e8f;
+  background: #e39e2b;
+  color: #071527;
+  border: 1px solid #0e4d64;
   border-radius: 6px;
   padding: 7px 12px;
   font-size: 0.95rem;
   z-index: 10;
   min-width: 180px;
-  box-shadow: 0 2px 8px rgba(108,30,143,0.08);
+  box-shadow: 0 2px 8px rgba(14,77,100,0.08);
 }
 .help-icon:focus + .help-tooltip,
 .help-icon:hover + .help-tooltip {
@@ -281,17 +323,17 @@ button:hover, button:focus {
   flex-direction: column;
   justify-content: flex-start;
   align-items: stretch;
-  background: #fff;
+  background: #0e4d64;
   border-radius: 18px 0 0 18px;
   margin-left: 0.5rem;
-  box-shadow: 0 4px 24px rgba(45, 108, 223, 0.08);
+  box-shadow: 0 4px 24px rgba(14,77,100, 0.08);
   padding: 1.2rem 1.2rem 1.2rem 1.2rem;
   overflow: hidden;
   position: relative;
 }
 .chart-title {
   text-align: center;
-  color: #2d6cdf;
+  color: #e39e2b;
   font-size: 1.1rem;
   font-weight: 600;
   margin-bottom: 0.5rem;
@@ -304,6 +346,9 @@ button:hover, button:focus {
   min-height: 400px;
   page-break-inside: avoid;
   display: block;
+  background: #071527;
+  border-radius: 8px;
+  border: 1px solid #e39e2b;
 }
 @media (max-width: 900px) {
   .main-flex {
@@ -342,7 +387,7 @@ button:hover, button:focus {
   html, body {
     background: #fff !important;
     color: #000 !important;
-    width: 100% !important;      /* Use 100% instead of 100vw */
+    width: 100% !important;
     height: 100vh !important;
     margin: 0 !important;
     padding: 0 !important;
@@ -357,11 +402,11 @@ button:hover, button:focus {
   .main-flex {
     flex-direction: column !important;
     height: auto !important;
-    width: 100% !important;      /* Use 100% instead of 100vw */
+    width: 100% !important;
     gap: 0 !important;
   }
   .container, .right-panel {
-    width: 100% !important;      /* Use 100% instead of 100vw */
+    width: 100% !important;
     min-width: 0 !important;
     max-width: 100% !important;
     border-radius: 0 !important;
@@ -375,14 +420,14 @@ button:hover, button:focus {
     font-size: 11px !important;
     padding: 0.5rem !important;
     margin: 0.5rem 0 0 0 !important;
-    background: #e3f2fd !important;
-    color: #174ea6 !important;
+    background: #e39e2b !important;
+    color: #071527 !important;
     border-radius: 8px !important;
     box-shadow: none !important;
     margin-top: 2rem !important;
     display: block !important;
     clear: both !important;
-    width: 100% !important;      /* Use 100% instead of 100vw */
+    width: 100% !important;
     box-sizing: border-box !important;
     position: relative !important;
     z-index: 1 !important;
@@ -390,109 +435,219 @@ button:hover, button:focus {
   .actions, .actions button {
     display: none !important;
   }
+  .right-panel {
+    page-break-before: always !important;
+    break-before: page !important;
+    page-break-inside: avoid !important;
+    display: block !important;
+    width: 100vw !important;
+    max-width: 100vw !important;
+    height: auto !important;
+    min-height: 700px !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    background: #071527 !important;
+    border: 1px solid #e39e2b !important;
+    overflow: visible !important;
+  }
   #esopChart {
-    max-width: 100% !important;
-    width: 100% !important;
+    width: 100vw !important;
+    max-width: 100vw !important;
+    height: 1000px !important; /* Increase as needed */
+    min-height: 700px !important;
+    margin: 0 auto !important;
+    page-break-inside: avoid !important;
+    overflow: visible !important;
+    display: block !important;
+  }
+  .disclaimer-box {
+    font-size: 9pt !important;
+    margin-left: 2vw !important;
+    margin-right: 2vw !important;
+    margin-top: 0.7rem !important;
+    margin-bottom: 0 !important;
+    padding: 0.6rem 1vw !important;
+    page-break-before: avoid !important;
+    page-break-after: avoid !important;
+    break-before: avoid !important;
+    break-after: avoid !important;
+    page-break-inside: avoid !important;
+    break-inside: avoid !important;
+    width: auto !important;
+    max-width: 96vw !important;
+    box-sizing: border-box !important;
+    display: block !important;
+  }
+  /* Group right-panel and disclaimer-box together for print */
+  .right-panel, .disclaimer-box {
+    page-break-inside: avoid !important;
+    break-inside: avoid !important;
+  }
+  input[type="number"], input[type="text"] {
+    color: #071527 !important;
+    background: #fff !important;
+    border: 1px solid #e39e2b !important;
+  }
+  button, #addScenarioBtn, #calculateBtn, #downloadBtn, #resetBtn, #printBtn,
+  .remove-btn, .help-icon, .help-tooltip {
+    display: none !important;
+  }
+  /* Hide subtitle on print second page (graph page) */
+  .subtitle {
+    display: none !important;
+  }
+  /* Center the h1 title */
+  .right-panel ~ .disclaimer-box ~ h1,
+  .right-panel ~ h1,
+  .right-panel h1,
+  h1 {
+    text-align: center !important;
+    margin-top: 1.5rem !important;
+    margin-bottom: 1.5rem !important;
+    font-size: 1.5rem !important;
+    display: block !important;
+  }
+}
+@media print {
+  #esopChart {
+    display: block !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    margin-top: 0 !important;
+    margin-bottom: 0.5rem !important;
+    width: 95vw !important;
+    max-width: 95vw !important;
     height: 700px !important;
     min-height: 500px !important;
     page-break-inside: avoid !important;
-    display: block !important;
+    overflow: visible !important;
   }
-  .result {
-    page-break-inside: avoid !important;
-    font-size: 12px !important;
-    padding: 0.2rem !important;
-  }
-  label, input, select, textarea {
-    font-size: 11px !important;
-  }
-  input, select, textarea {
-    border: 1px solid #bbb !important;
-    background: #fff !important;
-    color: #000 !important;
-    padding: 0.2rem !important;
-  }
-  input[type="number"], input[type="text"], select, textarea {
-    font-size: 9px !important;
-    padding: 0.1rem 0.2rem !important;
-    margin-top: 0.05rem !important;
-    margin-bottom: 0.15rem !important;
-    height: 1.2em !important;
-  }
-  label {
-    font-size: 10px !important;
-  }
-  /* Hide scrollbars */
-  ::-webkit-scrollbar { display: none !important; }
-  /* Remove any fixed heights */
-  * {
-    max-height: none !important;
-    height: auto !important;
-  }
-  html, body {
+  .right-panel {
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    width: 100% !important;
     margin: 0 !important;
     padding: 0 !important;
-    width: 100% !important;      /* Use 100% instead of 100vw */
     box-sizing: border-box !important;
-  }
-  .container, .right-panel, .main-flex {
-    margin: 0 !important;
-    padding: 0 !important;
-    width: 100% !important;      /* Use 100% instead of 100vw */
-    max-width: 100% !important;
-    box-sizing: border-box !important;
-  }
-  /* Optional: reduce disclaimer margin if needed */
-  .disclaimer-box {
-    margin-left: 0 !important;
-    margin-right: 0 !important;
-    width: 100% !important;      /* Use 100% instead of 100vw */
-    box-sizing: border-box !important;
+    background: #071527 !important;
+    border: 1px solid #e39e2b !important;
     page-break-inside: avoid !important;
-    display: block !important;
-    clear: both !important;
-    position: relative !important;
-    z-index: 1 !important;
   }
-  /* Hide number input arrows when printing (Chrome, Safari, Edge) */
-  input[type="number"]::-webkit-inner-spin-button,
-  input[type="number"]::-webkit-outer-spin-button {
-    -webkit-appearance: none !important;
-    margin: 0 !important;
+  /* Hide title and subtitle after the first page */
+  .right-panel ~ .disclaimer-box ~ .print-title,
+  .right-panel ~ .print-title,
+  .right-panel ~ .print-subtitle,
+  .right-panel ~ .disclaimer-box ~ .print-subtitle,
+  .right-panel h1,
+  .right-panel .subtitle,
+  .print-title,
+  .print-subtitle {
     display: none !important;
   }
-  /* Hide number input arrows for Firefox */
-  input[type="number"] {
-    -moz-appearance: textfield !important;
-    appearance: textfield !important;
-  }
-  /* Hide help icons and tooltips when printing */
-  .help-icon,
-  .help-tooltip {
+  /* Hide the main title and subtitle after the first page (graph/disclaimer page) */
+  .right-panel ~ .disclaimer-box ~ h1,
+  .right-panel ~ h1,
+  .right-panel ~ .disclaimer-box ~ .subtitle,
+  .right-panel ~ .subtitle,
+  .container h1,
+  .container .subtitle {
     display: none !important;
-    visibility: hidden !important;
   }
 }
-function applyInputErrorStyles() {
-  document.querySelectorAll('.scenario-row').forEach((row, idx) => {
-    [
-      'salary',
-      'salaryIncrease',
-      'accountBalance',
-      'fmvPercent',
-      'growth',
-      'years'
-    ].forEach(field => {
-      const input = row.querySelector(`.${field}`);
-      if (input) {
-        if (calculatePressed && (!input.value || input.value.trim() === "")) {
-          input.style.border = "2px solid #e53935";
-          input.style.background = "#fff5f5";
-        } else {
-          input.style.border = "";
-          input.style.background = "";
-        }
-      }
-    });
-  });
+@media print {
+  h1,
+  .container h1,
+  .right-panel h1,
+  .print-title {
+    display: none !important;
+  }
+}
+@media print {
+  /* Hide all h1 titles and subtitles on print (removes ESOP Participant Calculator and Compare multiple ESOP scenarios everywhere) */
+  h1,
+  .subtitle,
+  .container h1,
+  .container .subtitle,
+  .right-panel h1,
+  .right-panel .subtitle {
+    display: none !important;
+  }
+
+  /* Keep other print formatting as needed */
+  .highlight-input,
+  .highlight-input:focus {
+    background: none !important;
+    border: 1px solid #bbb !important;
+    box-shadow: none !important;
+  }
+  input, label, .scenario-title {
+    font-size: 12pt !important;
+    width: auto !important;
+    max-width: 100% !important;
+  }
+  body, .scenario-row, #scenariosArea, #result {
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    box-sizing: border-box !important;
+  }
+  #esopChart {
+    display: block !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    margin-top: 0 !important;
+    margin-bottom: 0.5rem !important;
+    width: 95vw !important;
+    max-width: 95vw !important;
+    height: 700px !important;
+    min-height: 500px !important;
+    page-break-inside: avoid !important;
+    overflow: visible !important;
+  }
+  .right-panel {
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    box-sizing: border-box !important;
+    background: #071527 !important;
+    border: 1px solid #e39e2b !important;
+    page-break-inside: avoid !important;
+  }
+  .disclaimer-box {
+    font-size: 9pt !important;
+    margin-left: 2vw !important;
+    margin-right: 2vw !important;
+    margin-top: 0.7rem !important;
+    margin-bottom: 0 !important;
+    padding: 0.6rem 1vw !important;
+    page-break-before: avoid !important;
+    page-break-after: avoid !important;
+    break-before: avoid !important;
+    break-after: avoid !important;
+    page-break-inside: avoid !important;
+    break-inside: avoid !important;
+    width: auto !important;
+    max-width: 96vw !important;
+    box-sizing: border-box !important;
+    display: block !important;
+  }
+  /* Group right-panel and disclaimer-box together for print */
+  .right-panel, .disclaimer-box {
+    page-break-inside: avoid !important;
+    break-inside: avoid !important;
+  }
+  input[type="number"], input[type="text"] {
+    color: #071527 !important;
+    background: #fff !important;
+    border: 1px solid #e39e2b !important;
+  }
+  button, #addScenarioBtn, #calculateBtn, #downloadBtn, #resetBtn, #printBtn,
+  .remove-btn, .help-icon, .help-tooltip {
+    display: none !important;
+  }
 }
