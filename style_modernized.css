@@ -876,20 +876,24 @@ button:disabled {
     display: none; /* Hide complex table on mobile */
   }
   
-  /* Create mobile scenario blocks */
+  /* Create mobile scenario blocks - side by side layout */
   .five-year-breakdown {
     display: flex;
-    flex-direction: column;
-    gap: var(--spacing-sm);
+    flex-direction: row;
+    gap: var(--spacing-xs);
+    overflow-x: auto;
+    padding-bottom: var(--spacing-xs);
   }
   
-  /* Mobile scenario containers */
+  /* Mobile scenario containers - horizontal layout */
   .mobile-scenario-container {
     background: rgba(7, 21, 39, 0.6);
     border-radius: var(--radius-sm);
     padding: var(--spacing-sm);
     border: 1px solid var(--border-primary);
-    margin-bottom: var(--spacing-xs);
+    flex: 1;
+    min-width: 0;
+    margin-bottom: 0;
   }
   
   .mobile-scenario-title {
@@ -900,20 +904,24 @@ button:disabled {
     text-align: center;
     font-weight: var(--font-weight-bold);
     margin-bottom: var(--spacing-xs);
-    font-size: 0.7rem;
+    font-size: 0.65rem;
     text-transform: uppercase;
     letter-spacing: 0.3px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
   
   .mobile-year-row {
     display: flex;
-    justify-content: space-between;
+    flex-direction: column;
     align-items: center;
     padding: var(--spacing-xs);
     border-bottom: 1px solid rgba(227, 158, 43, 0.2);
     background: rgba(7, 21, 39, 0.3);
     border-radius: var(--radius-xs);
     margin-bottom: 2px;
+    text-align: center;
   }
   
   .mobile-year-row:last-child {
@@ -924,35 +932,39 @@ button:disabled {
   .mobile-year-label {
     font-weight: var(--font-weight-bold);
     color: var(--text-primary);
-    font-size: 0.65rem;
-    min-width: 45px;
+    font-size: 0.6rem;
+    margin-bottom: 2px;
+    white-space: nowrap;
   }
   
   .mobile-year-data {
     display: flex;
     flex-direction: column;
-    align-items: flex-end;
+    align-items: center;
     gap: 1px;
-    flex: 1;
+    width: 100%;
   }
   
   .mobile-year-data .salary {
-    font-size: 0.55rem;
+    font-size: 0.5rem;
     color: var(--medium-blue);
     font-weight: var(--font-weight-medium);
+    text-align: center;
   }
   
   .mobile-year-data .balance {
-    font-size: 0.6rem;
+    font-size: 0.55rem;
     font-weight: var(--font-weight-bold);
     color: var(--text-primary);
+    text-align: center;
   }
   
   .mobile-year-data .multiple {
-    font-size: 0.5rem;
+    font-size: 0.45rem;
     color: var(--teal-blue);
     font-weight: var(--font-weight-medium);
     opacity: 0.9;
+    text-align: center;
   }
   
   .header img {
@@ -1004,6 +1016,33 @@ button:disabled {
   
   .header img {
     height: 140px;
+  }
+  
+  /* Ensure horizontal mobile layout works on very small screens */
+  .mobile-scenario-container {
+    min-width: 45%;
+    padding: var(--spacing-xs);
+  }
+  
+  .mobile-scenario-title {
+    font-size: 0.6rem;
+    padding: 2px;
+  }
+  
+  .mobile-year-label {
+    font-size: 0.55rem;
+  }
+  
+  .mobile-year-data .salary {
+    font-size: 0.45rem;
+  }
+  
+  .mobile-year-data .balance {
+    font-size: 0.5rem;
+  }
+  
+  .mobile-year-data .multiple {
+    font-size: 0.4rem;
   }
   
   /* Make chart HUGE on small mobile screens */
