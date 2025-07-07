@@ -27,3 +27,41 @@
         <div class="actions">
           <button type="button" id="calculateBtn" aria-label="Calculate projections">Calculate</button>
           <button type="button" id="addScenarioBtn" aria-label="Add new scenario">Add Scenario</button>
+          <button type="button" id="resetBtn" aria-label="Reset calculator">Reset</button>
+        </div>
+      </form>
+    </section>
+    
+    <!-- Right panel with results -->
+    <section class="results-section">
+      <!-- Chart Section -->
+      <div class="chart-section">
+        <div class="chart-container-full">
+          <canvas id="esopChart" aria-label="ESOP Projection Chart"></canvas>
+        </div>
+      </div>
+      
+      <!-- Numerical Results Section -->
+      <div class="numerical-results-section">
+        <div id="resultsContainer" class="results-container">
+          <!-- Results will be populated here by JavaScript -->
+        </div>
+        <div id="detailedResults" class="detailed-results">
+          <!-- Detailed yearly results will be populated here by JavaScript -->
+        </div>
+        <div id="detailedPrintResults" class="print-only">
+          <!-- Print-friendly results will be populated here by JavaScript -->
+        </div>
+      </div>
+    </section>
+  </main>
+  
+  <!-- Disclaimer -->
+  <div class="disclaimer-box">
+    <strong>IMPORTANT DISCLAIMER</strong>
+    This calculator provides rough estimates based on the inputs provided and should not be relied upon for financial planning or investment decisions. Actual ESOP values will vary based on company performance, valuation changes, and other factors not accounted for in these simplified projections. Please consult with your financial advisor and review your actual ESOP plan documents for accurate information.
+  </div>
+  
+  <script src="main_modernized.js"></script>
+</body>
+</html>
