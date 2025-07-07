@@ -520,51 +520,6 @@ button:disabled {
   .chart-section {
     touch-action: pan-x pan-y;
   }
-  
-  /* Make results tables more mobile-friendly */
-  .comparison-table {
-    font-size: 0.8rem;
-    overflow-x: auto;
-    display: block;
-    white-space: nowrap;
-  }
-  
-  .comparison-table thead,
-  .comparison-table tbody,
-  .comparison-table th,
-  .comparison-table td,
-  .comparison-table tr {
-    display: block;
-  }
-  
-  .comparison-table tr {
-    border: 1px solid var(--border-primary);
-    margin-bottom: var(--spacing-sm);
-    border-radius: var(--radius-sm);
-    background: rgba(7, 21, 39, 0.3);
-  }
-  
-  .comparison-table th,
-  .comparison-table td {
-    border: none;
-    border-bottom: 1px solid rgba(227, 158, 43, 0.2);
-    position: relative;
-    padding: var(--spacing-sm) var(--spacing-md);
-    text-align: left;
-    white-space: normal;
-  }
-  
-  .comparison-table th {
-    font-weight: var(--font-weight-bold);
-    background: var(--bg-accent);
-    color: var(--text-dark);
-  }
-  
-  .comparison-table td:before {
-    content: attr(data-label) ": ";
-    font-weight: var(--font-weight-semibold);
-    color: var(--text-primary);
-  }
 }
 
 /* === RESULTS SECTION === */
@@ -880,20 +835,24 @@ button:disabled {
   }
   
   .chart-section {
-    min-height: 45vh;
+    min-height: 90vh;
     flex: none;
+    padding: var(--spacing-md);
   }
   
-  /* Mobile chart optimizations */
   .chart-container-full {
     padding: var(--spacing-sm);
     border: 2px solid var(--border-primary);
     border-radius: var(--radius-md);
+    height: 100%;
+    min-height: 85vh;
   }
   
   .chart-container-full canvas {
-    max-width: calc(100% - 0.5rem) !important;
-    max-height: calc(100% - 0.5rem) !important;
+    width: 100% !important;
+    height: 100% !important;
+    max-width: calc(100% - 1rem) !important;
+    max-height: calc(100% - 1rem) !important;
   }
   
   /* Ensure chart is touch-friendly */
@@ -901,49 +860,103 @@ button:disabled {
     touch-action: pan-x pan-y;
   }
   
-  /* Make results tables more mobile-friendly */
+  /* Simplify results tables for mobile */
   .comparison-table {
     font-size: 0.8rem;
-    overflow-x: auto;
-    display: block;
-    white-space: nowrap;
-  }
-  
-  .comparison-table thead,
-  .comparison-table tbody,
-  .comparison-table th,
-  .comparison-table td,
-  .comparison-table tr {
-    display: block;
-  }
-  
-  .comparison-table tr {
-    border: 1px solid var(--border-primary);
-    margin-bottom: var(--spacing-sm);
-    border-radius: var(--radius-sm);
-    background: rgba(7, 21, 39, 0.3);
-  }
-  
-  .comparison-table th,
-  .comparison-table td {
-    border: none;
-    border-bottom: 1px solid rgba(227, 158, 43, 0.2);
-    position: relative;
-    padding: var(--spacing-sm) var(--spacing-md);
-    text-align: left;
-    white-space: normal;
+    border-radius: var(--radius-md);
+    margin-bottom: var(--spacing-lg);
+    box-shadow: var(--shadow-md);
   }
   
   .comparison-table th {
-    font-weight: var(--font-weight-bold);
-    background: var(--bg-accent);
-    color: var(--text-dark);
+    font-size: 0.75rem;
+    padding: var(--spacing-sm);
+    text-align: center;
   }
   
-  .comparison-table td:before {
-    content: attr(data-label) ": ";
-    font-weight: var(--font-weight-semibold);
+  .comparison-table td {
+    padding: var(--spacing-sm);
+    text-align: center;
+    vertical-align: middle;
+  }
+  
+  .comparison-table td:first-child {
+    font-size: 0.8rem;
+    font-weight: var(--font-weight-bold);
+    background: rgba(7, 21, 39, 0.6);
+    text-align: center;
+  }
+  
+  /* Clean up scenario data display */
+  .scenario-data {
+    display: flex;
+    flex-direction: column;
+    gap: 0.15rem;
+    align-items: center;
+    line-height: 1.2;
+  }
+  
+  .scenario-data .salary {
+    font-size: 0.7rem;
+    color: var(--medium-blue);
+    font-weight: var(--font-weight-medium);
+  }
+  
+  .scenario-data .balance {
+    font-size: 0.8rem;
+    font-weight: var(--font-weight-bold);
     color: var(--text-primary);
+  }
+  
+  .scenario-data .multiple {
+    font-size: 0.65rem;
+    color: var(--teal-blue);
+    font-weight: var(--font-weight-medium);
+    opacity: 0.9;
+  }
+  
+  /* Remove any unwanted pseudo-elements */
+  .comparison-table td:before,
+  .comparison-table td:after {
+    display: none !important;
+    content: none !important;
+  }
+  
+  .header img {
+    height: 170px;
+  }
+  
+  #scenariosArea {
+    flex-direction: column;
+  }
+  
+  .scenario-row {
+    min-width: auto;
+    max-width: 100%;
+    width: 100%;
+  }
+  
+  .scenario-name {
+    width: 100% !important;
+  }
+  
+  .actions {
+    flex-direction: column;
+    gap: var(--spacing-sm);
+  }
+  
+  .actions button {
+    max-width: 100%;
+    min-width: 100%;
+    font-size: 0.9rem;
+    padding: 1rem;
+  }
+  
+  .disclaimer-box {
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    margin: var(--spacing-xl) auto var(--spacing-lg) auto !important;
+    width: 90% !important;
   }
 }
 
@@ -960,18 +973,61 @@ button:disabled {
     height: 140px;
   }
   
-  /* Make chart even bigger on small mobile screens */
+  /* Make chart HUGE on small mobile screens */
   .chart-section {
-    min-height: 75vh;
+    min-height: 95vh;
+    padding: var(--spacing-sm);
   }
   
   .chart-container-full {
     padding: var(--spacing-xs);
     border: 1px solid var(--border-primary);
+    min-height: 90vh;
+    height: 90vh;
+  }
+  
+  .chart-container-full canvas {
+    width: 100% !important;
+    height: 100% !important;
+    max-width: calc(100% - 0.5rem) !important;
+    max-height: calc(100% - 0.5rem) !important;
   }
   
   .detailed-results {
     padding: var(--spacing-md);
+  }
+  
+  /* Enhanced mobile results styling */
+  .comparison-table {
+    font-size: 0.75rem;
+    margin-bottom: var(--spacing-md);
+  }
+  
+  .comparison-table th {
+    font-size: 0.7rem;
+    padding: var(--spacing-xs) var(--spacing-sm);
+  }
+  
+  .comparison-table td {
+    padding: var(--spacing-xs) var(--spacing-sm);
+  }
+  
+  .scenario-data .salary {
+    font-size: 0.65rem;
+  }
+  
+  .scenario-data .balance {
+    font-size: 0.75rem;
+  }
+  
+  .scenario-data .multiple {
+    font-size: 0.6rem;
+  }
+  
+  /* Ensure no pseudo-elements create unwanted content */
+  .comparison-table *:before,
+  .comparison-table *:after {
+    display: none !important;
   }
   
   .interval-table th,
@@ -1205,6 +1261,15 @@ button:disabled {
   
   .disclaimer-box strong {
     color: #000 !important;
+  }
+}
+
+/* Force disclaimer centering on mobile */
+@media (max-width: 768px) {
+  .disclaimer-box {
+    margin: var(--spacing-xl) var(--spacing-sm) var(--spacing-lg) var(--spacing-sm) !important;
+    width: auto !important;
+    max-width: none !important;
   }
 }
 
