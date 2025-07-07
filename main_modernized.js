@@ -269,12 +269,18 @@ function calculateProjections() {
     let currentSalary = data.salary;
     
     for (let year = 1; year <= data.years; year++) {
-      const contribution = currentSalary * data.fmvPercent;
-      currentBalance = (currentBalance + contribution) * (1 + data.growth);
+      // Apply compensation cap: $345,000 in year 1, increasing by $10,000 each year
+      const compensationCap = 345000 + ((year - 1) * 10000);
+      const cappedSalary = Math.min(currentSalary, compensationCap);
+      
+      const contribution = cappedSalary * data.fmvPercent;
+      // Apply growth to previous balance, then add new contribution
+      currentBalance = (currentBalance * (1 + data.growth)) + contribution;
       
       projections.push({
         year,
         salary: currentSalary,
+        cappedSalary,
         contribution,
         balance: currentBalance
       });
@@ -328,11 +334,15 @@ function displayResults(results) {
       // Add year-by-year data for this scenario
       result.projections.forEach(projection => {
         const multiple = projection.salary > 0 ? (projection.balance / projection.salary).toFixed(1) : '0.0';
+        const salaryDisplay = projection.cappedSalary < projection.salary 
+          ? `${formatCurrency(projection.salary)} (capped at ${formatCurrency(projection.cappedSalary)})`
+          : formatCurrency(projection.salary);
+        
         html += `
           <div class="mobile-year-row">
             <div class="mobile-year-label">Year ${projection.year}</div>
             <div class="mobile-year-data">
-              <div class="salary">${formatCurrency(projection.salary)}</div>
+              <div class="salary">${salaryDisplay}</div>
               <div class="balance"><strong>${formatCurrency(projection.balance)}</strong></div>
               <div class="multiple">${multiple}x</div>
             </div>
@@ -368,9 +378,13 @@ function displayResults(results) {
         if (i < result.projections.length) {
           const projection = result.projections[i];
           const multiple = projection.salary > 0 ? (projection.balance / projection.salary).toFixed(1) : '0.0';
+          const salaryDisplay = projection.cappedSalary < projection.salary 
+            ? `${formatCurrency(projection.salary)} (capped at ${formatCurrency(projection.cappedSalary)})`
+            : formatCurrency(projection.salary);
+          
           html += `
             <td class="scenario-data">
-              <div class="salary">${formatCurrency(projection.salary)}</div>
+              <div class="salary">${salaryDisplay}</div>
               <div class="balance"><strong>${formatCurrency(projection.balance)}</strong></div>
               <div class="multiple">${multiple}x</div>
             </td>
@@ -423,10 +437,14 @@ function updatePrintResults(results) {
     for (let i = 0; i < result.projections.length; i++) {
       const projection = result.projections[i];
       const multiple = projection.salary > 0 ? (projection.balance / projection.salary).toFixed(1) : '0.0';
+      const salaryDisplay = projection.cappedSalary < projection.salary 
+        ? `${formatCurrency(projection.salary)} (capped at ${formatCurrency(projection.cappedSalary)})`
+        : formatCurrency(projection.salary);
+      
       html += `
         <tr>
           <td>${projection.year}</td>
-          <td>${formatCurrency(projection.salary)}</td>
+          <td>${salaryDisplay}</td>
           <td><strong>${formatCurrency(projection.balance)}</strong></td>
           <td>${multiple}x</td>
         </tr>
